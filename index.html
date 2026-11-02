@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="en"><head>
+<meta name="robots" content="noindex,nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Good Words Drill</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400..600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#f4f8fb;--mut:rgba(228,238,246,.66);--dim:rgba(228,238,246,.4);--acc:#7cc8ff;--gold:#ffc98a;--bad:#ff8a8a;--ok:#7fe3b4;
+  --glass:linear-gradient(155deg,rgba(255,255,255,.13),rgba(255,255,255,.04) 60%,rgba(255,255,255,.07));--edge:inset 0 1px 0 rgba(255,255,255,.3),inset 0 0 0 1px rgba(255,255,255,.09);
+  --ease:cubic-bezier(.16,1,.3,1);--spring:cubic-bezier(.34,1.56,.64,1);--serif:"Instrument Serif",Georgia,serif;--mono:"JetBrains Mono",ui-monospace,monospace;color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background-color:#07121f;min-height:100%;color:var(--ink);font-family:Inter,-apple-system,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+body{background:radial-gradient(120% 70% at 50% 108%,rgba(255,180,110,.32),transparent 60%),radial-gradient(90% 60% at 50% 100%,rgba(124,200,255,.22),transparent 70%),linear-gradient(180deg,#040a12,#07121f 55%,#0c1a2a);background-attachment:fixed}
+.wrap{max-width:560px;margin:0 auto;padding-block:22px calc(110px + env(safe-area-inset-bottom));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{display:flex;align-items:center;gap:12px}
+header svg{width:34px;height:34px;flex:none}
+header .t{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--mut)}
+header .streak{margin-left:auto;font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase}
+h1{font-size:40px;line-height:1;letter-spacing:-.04em;margin:26px 0 0;font-weight:750}
+h1 em,h2 em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--acc);letter-spacing:-.01em}
+h2{font-size:28px;letter-spacing:-.03em;margin:0;font-weight:720;line-height:1.05}
+.lede{color:var(--mut);font-size:16px;line-height:1.45;margin:10px 0 0}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--acc)}
+.glass{background:var(--glass);box-shadow:var(--edge),0 30px 60px -30px rgba(0,0,0,.8);border-radius:24px;-webkit-backdrop-filter:blur(20px) saturate(160%);backdrop-filter:blur(20px) saturate(160%)}
+.view{display:none;animation:in .5s var(--ease)}
+.view.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+button{font:inherit;color:inherit;border:0;cursor:pointer;background:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;height:52px;padding:0 24px;border-radius:999px;font-weight:650;font-size:16px;background:linear-gradient(135deg,var(--acc),#8a7dff);color:#06121c;box-shadow:0 12px 30px -10px rgba(124,200,255,.6);transition:transform .2s var(--ease)}
+.btn:active{transform:scale(.96)}
+.btn.ghost{background:rgba(255,255,255,.08);color:var(--ink);box-shadow:inset 0 0 0 1px rgba(255,255,255,.16)}
+.btn.wide{width:100%}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+
+/* nav */
+nav{position:fixed;left:50%;bottom:calc(14px + env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;gap:4px;padding:6px;border-radius:999px;z-index:10;width:min(540px,calc(100% - 24px))}
+nav button{flex:1;height:48px;border-radius:999px;font-size:13px;font-weight:600;color:var(--mut);transition:all .3s var(--ease)}
+nav button.on{background:rgba(124,200,255,.2);color:#fff;box-shadow:inset 0 0 0 1px rgba(124,200,255,.55)}
+
+/* learn */
+.letters{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.lt{padding:16px 16px 16px;text-align:left;border-radius:22px;transition:transform .3s var(--spring)}
+.lt:active{transform:scale(.97)}
+.lt .L{font-size:58px;font-weight:800;letter-spacing:-.05em;line-height:.9;background:linear-gradient(180deg,#fff 10%,var(--acc) 75%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lt .nm{font-size:18px;font-weight:720;margin-top:8px;letter-spacing:-.02em}
+.lt .ds{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--ink);margin-top:2px}
+.lt .more{max-height:0;overflow:hidden;transition:max-height .5s var(--ease)}
+.lt.open .more{max-height:320px}
+.lt .ex{font-size:13px;line-height:1.5;color:var(--ink);margin-top:10px}
+.lt .no{font-size:15px;font-weight:650;line-height:1.4;color:var(--bad);margin-top:10px}
+.nv{display:block;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.22em;color:var(--bad);margin-bottom:3px}
+
+/* objection cards */
+.meter{display:flex;gap:5px;margin-top:20px}
+.meter i{position:relative;cursor:pointer;flex:1;height:5px;border-radius:5px;background:rgba(255,255,255,.12);transition:background .4s,transform .3s}
+.meter i::after{content:"";position:absolute;inset:-12px -3px}
+.meter i:hover{background:rgba(255,255,255,.3)}
+.meter i.ok{background:var(--acc);box-shadow:0 0 10px var(--acc)}
+.meter i.cur{background:#fff;transform:scaleY(1.6)}
+#cardArea{touch-action:pan-y}
+.card.nx{animation:nx .35s var(--ease)}
+.card.pv{animation:pv .35s var(--ease)}
+@keyframes nx{from{opacity:0;transform:translateX(48px)}}
+@keyframes pv{from{opacity:0;transform:translateX(-48px)}}
+.card{display:block;width:100%;margin-top:16px;padding:26px 22px;text-align:left;min-height:320px}
+.card.turn{animation:turn .36s var(--ease)}
+@keyframes turn{50%{transform:scaleX(.02)}}
+.card.front{display:flex;flex-direction:column}
+.card .say{font-family:var(--serif);font-size:40px;line-height:1.08;margin-top:18px;letter-spacing:-.01em}
+.card .hint{margin-top:auto;padding-top:24px;font-size:13px;color:var(--dim)}
+.card .real{font-size:15px;line-height:1.45;color:var(--mut);margin-top:8px}
+.card .real b{color:var(--gold);font-weight:650}
+.ans{list-style:none;padding:0;margin:18px 0 0;display:flex;flex-direction:column;gap:10px;counter-reset:a}
+.ans li{position:relative;padding:14px 16px 14px 50px;border-radius:16px;background:rgba(0,0,0,.22);font-size:16px;line-height:1.45;counter-increment:a}
+.ans li::before{content:counter(a);position:absolute;left:14px;top:13px;width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800;color:#06121c;background:linear-gradient(160deg,#fff,var(--acc))}
+.ans b{color:var(--ok);font-weight:700}
+.duo{display:grid;grid-template-columns:1fr 1.4fr;gap:10px;margin-top:14px}
+.done{text-align:center;padding:34px 20px;margin-top:16px}
+.done .big{font-size:84px;font-weight:800;letter-spacing:-.05em;background:linear-gradient(180deg,#fff,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1}
+
+/* say */
+.pick{display:flex;gap:8px;overflow-x:auto;margin:18px -16px 0;padding:0 16px 4px;scrollbar-width:none}
+.pick::-webkit-scrollbar{display:none}
+.pick button{flex:none;height:38px;padding:0 16px;border-radius:999px;font-size:13px;font-weight:600;color:var(--mut);background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+.pick button.on{color:#fff;background:rgba(124,200,255,.2);box-shadow:inset 0 0 0 1px var(--acc)}
+.scen{margin-top:14px;padding:22px 20px}
+.scen p{font-size:19px;line-height:1.4;margin:10px 0 0;font-weight:500}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.chip{padding:7px 14px;border-radius:999px;font-size:13px;font-weight:650;background:rgba(124,200,255,.16);box-shadow:inset 0 0 0 1px rgba(124,200,255,.45)}
+.chip.hit{background:rgba(127,227,180,.22);box-shadow:inset 0 0 0 1px var(--ok)}
+textarea{width:100%;min-height:120px;margin-top:14px;padding:16px;border-radius:18px;border:0;resize:vertical;font:500 17px/1.45 Inter,sans-serif;color:#fff;background:rgba(0,0,0,.28);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);outline:none}
+textarea:focus{box-shadow:inset 0 0 0 2px var(--acc)}
+.mic.rec{background:rgba(255,138,138,.25);box-shadow:inset 0 0 0 1px var(--bad)}
+.result{margin-top:14px;padding:18px 20px;display:none}
+.result.on{display:block;animation:in .5s var(--ease)}
+.checks{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.ck{display:flex;gap:10px;font-size:15px;line-height:1.4}
+.ck i{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:800;color:#06121c;background:var(--ok)}
+.ck.x i{background:var(--bad)}
+.flag{color:var(--bad);font-weight:650}
+.model{margin-top:14px;font-family:var(--serif);font-style:italic;font-size:20px;line-height:1.35}
+.aft{margin:12px 0 0;font-size:14px;line-height:1.45;color:var(--mut)}
+.aft b{color:var(--gold)}
+.model b{font-family:Inter,sans-serif;font-style:normal;font-weight:700;font-size:.85em;color:var(--acc)}
+
+/* sheet */
+.seg{display:flex;gap:6px;margin-top:20px;padding:5px;border-radius:999px;background:rgba(255,255,255,.06)}
+.seg button{flex:1;height:40px;border-radius:999px;font-size:14px;font-weight:650;color:var(--mut)}
+.seg button.on{background:rgba(124,200,255,.2);color:#fff}
+.sheet{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.sr{display:block;padding:14px 18px;border-radius:18px;text-align:left}
+.sr .b{font-size:16px;font-weight:650;line-height:1.35;color:var(--bad)}
+.sr .g::before{content:"SAY";display:block;font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.22em;color:var(--ok);margin-bottom:2px}
+.sr .g{font-size:17px;font-weight:650;margin-top:10px;transition:all .3s var(--ease)}
+.cover .sr .g{filter:blur(8px);opacity:.6}
+.cover .sr.peek .g{filter:none;opacity:1}
+.toggle{margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:14px;color:var(--mut)}
+.sw{width:52px;height:30px;border-radius:999px;background:rgba(255,255,255,.14);position:relative;transition:background .3s;flex:none}
+.sw::after{content:"";position:absolute;left:3px;top:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:transform .3s var(--spring)}
+.sw.on{background:var(--acc)}
+.sw.on::after{transform:translateX(22px)}
+.fine{margin-top:26px;text-align:center;font-family:var(--mono);font-size:9px;letter-spacing:.2em;color:var(--dim);text-transform:uppercase;line-height:1.8}
+#toast{position:fixed;left:50%;top:18px;transform:translate(-50%,-30px);opacity:0;transition:all .4s var(--ease);padding:10px 18px;border-radius:999px;background:rgba(10,20,30,.85);box-shadow:inset 0 0 0 1px rgba(255,255,255,.2);font-size:13px;font-weight:600;z-index:20}
+#toast.show{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <svg viewBox="0 0 200 200" aria-hidden="true"><defs><clipPath id="rc"><circle cx="100" cy="100" r="90"/></clipPath><radialGradient id="rg" cx="50%" cy="40%" r="70%"><stop offset="0" stop-color="#3f8c9c"/><stop offset="1" stop-color="#25586a"/></radialGradient></defs><circle cx="100" cy="100" r="99" fill="#fff"/><circle cx="100" cy="100" r="91" fill="url(#rg)"/><g clip-path="url(#rc)"><g id="rays" fill="#fff"></g><path d="M-20 205 L100 110 L220 205Z" fill="#fff"/><path d="M62 140 q19 -9 38 -2 t38 -2" stroke="#33707f" stroke-width="4" fill="none" stroke-linecap="round"/><text x="100" y="181" text-anchor="middle" font-family="Inter,Arial,sans-serif" font-size="42" font-weight="800" fill="#33707f">RISE</text></g></svg>
+    <span class="t">Good Words Drill</span>
+    <span class="streak" id="streak"></span>
+  </header>
+
+  <!-- LEARN -->
+  <section class="view on" id="v-learn">
+    <h1>Good words <em>OPEN</em> doors.</h1>
+    <p class="lede">Bad words close them. Every good word lives under one of four letters. Tap a letter.</p>
+    <div class="letters" id="letters"></div>
+  </section>
+
+  <!-- CARDS -->
+  <section class="view" id="v-cards">
+    <h1>Objections. <em>Answered.</em></h1>
+    <p class="lede">The 10 things people say most. Answer it out loud first. Then flip for 3 ways to say it with good words. Swipe to go through all 10.</p>
+    <div class="meter" id="meter"></div>
+    <div id="cardArea"></div>
+  </section>
+
+  <!-- SAY / ASK -->
+  <section class="view" id="v-say">
+    <h1 id="sayTitle">Say <em>it.</em></h1>
+    <p class="lede" id="sayLede">Pick a moment. Type it or tap the mic and say it. We flag every bad word.</p>
+    <div class="pick" id="pick"></div>
+    <div class="glass scen">
+      <div class="mono" id="sTag"></div>
+      <p id="sSetup"></p>
+      <div class="mono" style="margin-top:16px;color:var(--mut)">Use these words</div>
+      <div class="chips" id="sMust"></div>
+    </div>
+    <textarea id="line" placeholder="Say your line here…"></textarea>
+    <div class="row" style="margin-top:12px">
+      <button class="btn" id="check">Check my words</button>
+      <button class="btn ghost mic" id="mic" hidden>🎤 Speak</button>
+      <button class="btn ghost" id="show">Show a model</button>
+    </div>
+    <div class="glass result" id="result"></div>
+    <button class="btn ghost wide" id="claude" style="margin-top:14px">Copy a role play for Claude</button>
+  </section>
+
+  <!-- SHEET -->
+  <section class="view" id="v-sheet">
+    <h1>The <em>sheet.</em></h1>
+    <p class="lede">Turn on Quiz me to blur the good words. Tap a row to peek.</p>
+    <div class="seg" id="seg"><button class="on" data-c="fam">Clients</button><button data-c="par">Partners</button></div>
+    <div class="toggle"><span>Quiz me (hide good words)</span><button class="sw" id="cover" aria-label="Quiz me"></button></div>
+    <div class="sheet" id="sheet"></div>
+    <p class="fine">Paperwork exception: when a form says premium or signature, use the form’s word.<br>Do not distribute outside Team RISE · Internal training only</p>
+  </section>
+</div>
+
+<nav class="glass" id="nav">
+  <button class="on" data-v="learn">Learn</button>
+  <button data-v="cards">Cards</button>
+  <button data-v="say">Say</button>
+  <button data-v="ask">Ask</button>
+  <button data-v="sheet">Sheet</button>
+</nav>
+<div id="toast"></div>
+
+<script>
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const store = { get(k, d) { try { const v = localStorage.getItem('gw_' + k); return v ? JSON.parse(v) : d } catch (e) { return d } }, set(k, v) { try { localStorage.setItem('gw_' + k, JSON.stringify(v)) } catch (e) {} } };
+function toast(t) { const el = $('#toast'); el.textContent = t; el.classList.add('show'); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove('show'), 2000) }
+const shuffle = a => { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]] } return a };
+
+/* logo rays */
+(() => { let r = ''; for (let i = 0; i < 9; i++) { const a = (190 + i * 20) * Math.PI / 180, h = 5.6 * Math.PI / 180, L = 150; r += `<polygon points="100,122 ${(100 + L * Math.cos(a - h)).toFixed(1)},${(122 + L * Math.sin(a - h)).toFixed(1)} ${(100 + L * Math.cos(a + h)).toFixed(1)},${(122 + L * Math.sin(a + h)).toFixed(1)}"/>` } $('#rays').innerHTML = r })();
+
+/* ---------- the words ---------- */
+const OPEN = [
+  { L: 'O', nm: 'Own it', ds: 'It’s their money.', ex: 'own · invest · contribute · savings program · authorize · moving forward', no: 'buy, pay, policy, premium, sign, commit' },
+  { L: 'P', nm: 'Partner up', ds: 'Next to us, not under us.', ex: 'business partner · mentor · our team · we · platform · professional network · let’s', no: 'recruit, join, upline, my team, the company, agent, you should' },
+  { L: 'E', nm: 'Easy chat', ds: 'A visit, not a pitch.', ex: 'share · chat · visit · event · personal introductions · would you be open to', no: 'appointment, pitch, meeting, referral, tell, commands' },
+  { L: 'N', nm: 'New future', ds: 'Where they’re headed.', ex: 'helping families · entrepreneur · financial space · compensation · challenge · peace of mind', no: 'sell, side hustle, insurance, extra income, problem, financial freedom' }
+];
+const SHEET = {
+  fam: [['N', 'Closing, sales, sell', 'Helping families, implementing plans and strategies, securing their future'], ['E', 'Send me a referral', 'Personal introductions, recommendations'], ['N', 'Insurance license, insurance industry', 'Financial industry, financial space'], ['O', 'Buy, purchase, pay', 'Own, invest, contribute'], ['O', 'Policy, contract, product, life insurance, annuity', 'Savings program, financial vehicle, tool or plan, tax-free retirement plan, tax optimization strategy, asset protection'], ['O', 'Commit, commitment', 'Moving forward, start saving, start investing, start contributing'], ['O', 'Premium, cost, price, payment, fee', 'Contribution, investment, amount, good faith deposit'], ['O', 'Signature, sign', 'Authorization, authorize, endorse, approve, verify'], ['P', '“You should do this.”', '“Let’s optimize…” “How about we strategize…”'], ['E', 'Tell', 'Recommend, advise'], ['E', 'Giving instructions or commands', '“Would you be open to…?” “How about we…?” “What are your thoughts about…?”']],
+  par: [['P', 'The company', 'Platform, opportunity, community, organization, professional network'], ['N', 'Side hustle, job, part-time gig', 'Entrepreneurship, entrepreneur, business'], ['E', 'Appointment, presentation, pitch, meeting', 'Share, get together, chat, visit, virtual event'], ['P', 'Upline, boss, manager, supervisor, SMD, my leader', 'Mentor, trainer, coach, friend, successful in business and life'], ['P', 'Join, recruit', 'Get access to the training program, get involved, come on board, get started'], ['P', 'Recruit, downline, sideline', 'Business partner, teammate'], ['P', 'My team, me, my baseshop', 'Our team, we, our organization, our professional network, our firm'], ['P', 'Agent', 'Professional'], ['A/B', 'When are you free? When do you want to meet?', 'What’s better for you, A or B? Which would you prefer?'], ['N', 'Commission, contract level, points, earning money, extra income, side income, make more money', 'Compensation, business revenue, income that doesn’t stop when you stop, multiple streams of income'], ['N', 'Problem, issue', 'Challenge, opportunity to grow, personal development, growing'], ['N', '“I can’t afford it / do it / attend because…”', '“I must because…” State your whys and get to work.'], ['N', 'Financial freedom', 'Securing your financial future, creating peace of mind, financial stability']]
+};
+/* objection cards: the 10 Common Objections on the Hub's Scripts page, 3 good-word answers each */
+const OBJ = [
+  { q: 'Is this an MLM or a pyramid scheme?', real: 'Is this legit? Can I make money? Will people judge me?', a: [
+    'Fair question. It’s a licensed <b>business</b> <b>helping families</b> in the <b>financial space</b>. What’s been your experience with things like that before?',
+    'Sounds like you want to know it’s real before you put your name on it. We are part of a large-cap publicly listed firm traded on the New York Stock Exchange. Have you ever been part of a global financial powerhouse before?',
+    'Smart thing to check. Would you be open to a <b>visit</b> at our <b>event</b> so you can see it for yourself? <b>This Saturday or next?</b>'] },
+  { q: 'I’m too busy.', real: 'I don’t see how this fits my life.', a: [
+    'Sounds like your plate is full. Most of our <b>business partners</b> started busy too. Do you feel like you’re getting closer to your goals every day?',
+    'In a perfect world, what would your week look like a few years from now? That’s what a <b>mentor</b> helps you build.',
+    'Totally fair. Would you be open to a 20 minute <b>chat</b> to see if it even fits? <b>Tuesday or Thursday</b> evening?'] },
+  { q: 'I already have a financial advisor.', real: 'I don’t want to be pushed, or have to switch.', a: [
+    'Good, that tells me you take your <b>future</b> seriously. What do you like most about them, and what would you change?',
+    'I’m not here to replace anyone. What would a second set of eyes on your <b>savings program</b> and <b>asset protection</b> be worth to you?',
+    'Would you be <b>open to</b> looking at different ways to <b>optimize</b> your current plan?'] },
+  { q: 'I don’t have time to build a business.', real: 'This sounds like a lot to take on.', a: [
+    'Makes sense. What would it mean to you to build a <b>business</b> on your own schedule that gave you more <b>peace of mind</b> later?',
+    'You wouldn’t build it alone. You’d have a <b>mentor</b> and <b>our team</b> right next to you. What would that change for you?',
+    'What does your ideal week look like? Would you be open to a <b>chat</b> about how this could fit around it, <b>this week or next</b>?'] },
+  { q: 'Is this WFG? / What is the name of the company?', real: 'Can I trust this?', a: [
+    'I appreciate you <b>sharing</b> that. What did you hear, and where did it come from?',
+    'That’s fair. What would it take for you to feel confident this <b>opportunity</b> is the real deal?',
+    'Would you be open to a <b>visit</b> with <b>our team</b> so you decide on what you see, not what you heard? <b>Saturday or Tuesday?</b>'] },
+  { q: 'I don’t know enough people.', real: 'I’m not sure I can do this.', a: [
+    'I hear you. Most of our <b>business partners</b> said the same thing on day one.',
+    'You don’t need a big network. Your <b>mentor</b> shows you how to grow through <b>personal introductions</b>, one family at a time. What would that change for you?',
+    'What stopped you from looking at an <b>opportunity</b> like this before?'] },
+  { q: 'I need to think about it.', real: 'I’m not convinced yet, or I’m afraid to say no.', a: [
+    'That makes sense. What’s the one <b>challenge</b> you want to think through?',
+    'Usually that means one piece doesn’t fit yet. Is it the timing, or the <b>amount</b>?',
+    'When you’ve waited on decisions like this before, what happened? What would a great outcome look like for your family’s <b>future</b>?'] },
+  { q: 'I don’t have money to get started.', real: 'Is this worth the risk?', a: [
+    'How long have you wanted to build something of your <b>own</b>?',
+    'Which is the bigger <b>challenge</b>: the <b>registration investment</b>, or your income staying exactly the same for 3 more years?',
+    'What would it mean if you found a way to <b>get started</b> that covered itself in the first month?'] },
+  { q: 'Is this selling to friends and family?', real: 'I don’t want to hurt my relationships.', a: [
+    'Great question. What concerns you most about mixing <b>business</b> and personal?',
+    'How do you think most professionals in the <b>financial space</b> grow their client base?',
+    'What would it look like to build it in a way that made those relationships stronger? You <b>share</b>, they decide. That’s <b>helping families</b>.'] },
+  { q: 'I have a job.', real: 'Why risk what I have?', a: [
+    'That’s great. Would you be open to an <b>opportunity</b> that runs right alongside it?',
+    'Most of our <b>business partners</b> keep their job. What do you love about yours, and what would you change?',
+    'What would <b>multiple streams of income</b> from a <b>business</b> of your <b>own</b> do for your family, while you keep your job?'] }
+];
+/* the checker: every bad word and its fix */
+const BAD = [
+  [/\b(sell|selling|sold|sales?)\b/gi, 'helping families'], [/\b(close|closing|closed)\b/gi, 'help, moving forward'], [/\blife insurance\b/gi, 'savings program'], [/\b(?<!life )insurance\b/gi, 'the financial space'], [/\bannuit(y|ies)\b/gi, 'savings program'], [/\binfinite banking\b/gi, 'the financial space'],
+  [/\b(buy|buying|purchase)\b/gi, 'own'], [/\b(pay|paying|payment|payments)\b/gi, 'contribute, contribution'], [/\bpolic(y|ies)\b/gi, 'savings program'], [/\bcontracts?\b/gi, 'plan'], [/\bproducts?\b/gi, 'financial vehicle'],
+  [/\bpremiums?\b/gi, 'contribution'], [/\b(cost|costs|price|fees?)\b/gi, 'amount, contribution'], [/\b(sign|signed|signing|signature)\b/gi, 'authorize'], [/\bcommit(ment|ted)?\b/gi, 'moving forward, start saving'],
+  [/\b(problems?|issues?)\b/gi, 'challenge'], [/\bwhen are you free\b|\bwhen do you want to meet\b/gi, 'A or B?'], [/\bside hustle\b|\bgig\b|\bjobs?\b/gi, 'business'], [/\b(appointment|pitch|presentation|meeting)s?\b/gi, 'chat, visit, get together'],
+  [/\b(upline|boss|manager|supervisor|my leader)\b/gi, 'mentor, coach'], [/\b(join|joining)\b/gi, 'get involved, come on board'], [/\brecruit(s|ing)?\b|\bdownline\b|\bsideline\b/gi, 'business partner'], [/\bmy (team|baseshop)\b/gi, 'our team'], [/\bthe company\b/gi, 'our platform, our professional network'], [/\bagents?\b/gi, 'professional'],
+  [/\b(commission|contract level|points|extra income|side income|earning money|make more money)\b/gi, 'compensation, multiple streams of income'], [/\bfinancial freedom\b/gi, 'peace of mind, financial stability'], [/\bcan'?t (afford|because)\b/gi, 'I must because'],
+  [/\breferrals?\b/gi, 'personal introductions'], [/\byou should\b/gi, 'let’s, how about we'], [/\b(let me tell you|i'?ll tell you|i'?m telling you)\b/gi, 'recommend']
+];
+const SCEN = [
+  { k: 'say', tag: 'Step 1 · Booking', setup: 'A friend says your work sounds interesting. Book a time to talk more.', must: [['chat or visit', /chat|visit|get together|share|coffee/i], ['A or B', /\bor\b/i]], model: 'I’d love to <b>share</b> more. What’s better for you, <b>weekday evenings or weekends</b>, to grab a coffee and <b>chat</b>?' },
+  { k: 'say', tag: 'Step 2 · The invite', setup: 'Invite a sharp, ambitious friend to Saturday’s event.', must: [['event', /event/i], ['business word', /business|entrepreneur|opportunity|platform/i], ['A or B', /\bor\b/i]], model: 'You’ve always had an <b>entrepreneur</b> streak. We have an <b>event</b> Saturday about building a <b>business</b> in the financial space. Want to come <b>in person at 11am</b>, or catch the <b>virtual event</b> at 12pm EST?' },
+  { k: 'say', tag: 'Step 3 · What is the company called?', setup: 'A future partner asks: “What is the company called?”', must: [['platform or network', /platform|community|organization|network/i], ['our team', /our team|together|mentor/i]], model: 'It’s World Financial Group. It’s the <b>platform</b> we use to build a <b>business</b> in the financial space, and <b>our team</b> trains together every week.' },
+  { k: 'say', tag: 'Step 4 · The money question', setup: 'The family asks: “How much does this cost each month?”', must: [['contribution or amount', /contribut|amount|invest/i], ['A or B', /\bor\b/i]], model: 'Great question. The <b>contribution</b> is up to you. Would you rather start at <b>$1,000 or something closer to $500</b>?' },
+  { k: 'say', tag: 'Objection · Is this sales?', setup: 'They ask: “Wait, is this a sales job?”', must: [['business word', /business|entrepreneur/i], ['help', /help/i]], model: 'Fair question. It’s a <b>business</b>. We <b>help families</b> understand their money, and we teach you to do the same. Would you be open to seeing how it works?' },
+  { k: 'say', tag: 'After Step 5 · Introductions', setup: 'The family just started their savings program. Ask for introductions.', must: [['personal introductions', /introduc/i], ['open question', /open|who/i]], model: 'Who are two families you care about who would want to see this? Would you be open to a <b>personal introduction</b>?' },
+  { k: 'ask', tag: 'Step 5 · Moving to the application', setup: 'You walked them through the plan. They like it. Now move to the application.', must: [['own', /\bown/i], ['contribution', /contribut/i], ['authorize', /authoriz/i], ['A or B', /\bor\b/i]], model: 'What’s better for your first <b>contribution</b>, the 1st or the 15th? Perfect. I just need your <b>authorization</b> right here, and it’s yours to <b>own</b>.' },
+  { k: 'ask', tag: 'They already have a plan', setup: 'They have a plan through work and feel “fine.” Ask the closing question.', must: [['open to', /open to/i], ['optimize', /optimi/i]], model: 'Would you be <b>open to</b> looking at different ways to <b>optimize</b> your current plan?' },
+  { k: 'ask', tag: 'The old 401(k)', setup: 'They left an old 401(k) at a past job, sitting in the market.', must: [['open to', /open to/i], ['protected', /protect/i]], model: 'Would you be <b>open to</b> moving it from an <b>unprotected</b> place to a <b>protected</b> place?' },
+  { k: 'ask', tag: 'Future partner · Next step', setup: 'They loved the event and want to know more about the business.', must: [['learn more', /learn more|open to/i], ['training program', /training/i]], model: 'Would you like to learn more about what it takes to get <b>access</b> to the world class <b>training program</b>?', after: 'Then walk them through <b>TLTC</b>: Training, Licensing, Time Commitment.' }
+];
+
+/* ---------- streak ---------- */
+function bump() { const d = new Date().toDateString(), s = store.get('streak', { d: '', n: 0 }); if (s.d === d) return; const y = new Date(Date.now() - 864e5).toDateString(); s.n = s.d === y ? s.n + 1 : 1; s.d = d; store.set('streak', s); paintStreak() }
+function paintStreak() { const s = store.get('streak', { n: 0 }); $('#streak').textContent = s.n ? s.n + ' day streak' : '' }
+paintStreak();
+
+/* ---------- nav ---------- */
+let sayMode = 'say';
+function show(v) {
+  $$('#nav button').forEach(b => b.classList.toggle('on', b.dataset.v === v));
+  const target = v === 'ask' ? 'say' : v;
+  $$('.view').forEach(s => s.classList.toggle('on', s.id === 'v-' + target));
+  if (v === 'say' || v === 'ask') { sayMode = v; paintPick() }
+  if (v === 'cards' && !order) newDeck();
+  scrollTo({ top: 0, behavior: 'smooth' });
+}
+$$('#nav button').forEach(b => b.onclick = () => show(b.dataset.v));
+
+/* ---------- learn ---------- */
+$('#letters').innerHTML = OPEN.map(o => `<button class="glass lt"><div class="L">${o.L}</div><div class="nm">${o.nm}</div><div class="ds">${o.ds}</div><div class="more"><div class="ex">${o.ex}</div><div class="no"><span class="nv">NEVER USE</span>${o.no}</div></div></button>`).join('');
+$$('.lt').forEach(b => b.onclick = () => b.classList.toggle('open'));
+
+/* ---------- objection cards: "Again" keeps a card in play, "Got it" retires it ---------- */
+let order = null, pos = 0, side = 0, known = new Set(), missed = new Set(), sx = 0, sy = 0;
+$('#meter').innerHTML = OBJ.map(() => '<i></i>').join('');
+$$('#meter i').forEach((m, i) => m.onclick = () => {
+  if (!order || known.size === order.length || i === pos) return;
+  const step = i > pos ? 1 : -1; pos = i; side = 0; paintObj(step > 0 ? 'nx' : 'pv');
+});
+function newDeck() { order = shuffle(OBJ.map((_, i) => i)); pos = 0; side = 0; known = new Set(); missed = new Set(); paintObj() }
+function go(step) { pos = (pos + step + order.length) % order.length; side = 0; paintObj(step > 0 ? 'nx' : 'pv') }
+function nextOpen() {
+  if (known.size === order.length) return paintObj();
+  do { pos = (pos + 1) % order.length } while (known.has(order[pos]));
+  side = 0; paintObj('nx');
+}
+function paintObj(anim) {
+  $$('#meter i').forEach((m, i) => { m.classList.toggle('ok', known.has(order[i])); m.classList.toggle('cur', i === pos && known.size < order.length) });
+  if (known.size === order.length) return paintObjDone();
+  const o = OBJ[order[pos]];
+  const face = side
+    ? `<div class="mono">What they’re really asking</div><div class="real"><b>${o.real}</b></div><ol class="ans">${o.a.map(x => `<li>${x}</li>`).join('')}</ol>`
+    : `<div class="mono">Card ${pos + 1} of ${OBJ.length} · They say</div><div class="say">“${o.q}”</div><div class="hint">Say your answer out loud. Tap to flip. Swipe for the next card.</div>`;
+  const btns = side
+    ? `<div class="duo"><button class="btn ghost" id="again">Again</button><button class="btn" id="gotit">Next</button></div>`
+    : `<button class="btn wide" id="flip" style="margin-top:14px">Show 3 answers</button>`;
+  $('#cardArea').innerHTML = `<div class="glass card ${side ? 'back' : 'front'}${anim ? ' ' + anim : ''}" id="oc" role="button" tabindex="0">${face}</div>${btns}`;
+  if (side) {
+    $('#oc').onclick = () => flip();
+    $('#again').onclick = () => { missed.add(order[pos]); flip() };
+    $('#gotit').onclick = () => { known.add(order[pos]); bump(); nextOpen() };
+  } else { $('#oc').onclick = $('#flip').onclick = () => flip() }
+}
+function flip() { side = 1 - side; paintObj('turn') }
+/* swipe left or right on the card, or use the arrow keys, to move through all 10 */
+$('#cardArea').addEventListener('touchstart', e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY }, { passive: true });
+$('#cardArea').addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy;
+  if (order && known.size < order.length && Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.5) go(dx < 0 ? 1 : -1);
+});
+document.addEventListener('keydown', e => {
+  if (!$('#v-cards').classList.contains('on') || !order || known.size === order.length) return;
+  if (e.key === 'ArrowRight') go(1); else if (e.key === 'ArrowLeft') go(-1);
+});
+function paintObjDone() {
+  const first = OBJ.length - missed.size;
+  const msg = first === OBJ.length ? 'Every one, first try. Now say them to a real person.' : 'Go again. The ones you missed get easier every pass.';
+  $('#cardArea').innerHTML = `<div class="glass done"><div class="mono">All ${OBJ.length} answered</div><div class="big">${first}/${OBJ.length}</div><p class="lede">First try. ${msg}</p><button class="btn wide" style="margin-top:22px" id="again">Shuffle and go again</button></div>`;
+  $('#again').onclick = newDeck;
+}
+
+/* ---------- say / ask ---------- */
+let cur;
+function paintPick() {
+  $('#sayTitle').innerHTML = sayMode === 'ask' ? 'Ask for <em>the yes.</em>' : 'Say <em>it.</em>';
+  $('#sayLede').textContent = sayMode === 'ask' ? 'Closing questions only. Use the good words and end with a question.' : 'Pick a moment. Type it or tap the mic and say it. We flag every bad word.';
+  const list = SCEN.filter(s => s.k === sayMode);
+  $('#pick').innerHTML = list.map((s, i) => `<button data-i="${SCEN.indexOf(s)}">${s.tag}</button>`).join('');
+  $$('#pick button').forEach(b => b.onclick = () => load(+b.dataset.i));
+  load(SCEN.indexOf(list[0]));
+}
+function load(i) {
+  cur = SCEN[i]; $$('#pick button').forEach(b => b.classList.toggle('on', +b.dataset.i === i));
+  $('#sTag').textContent = cur.tag; $('#sSetup').textContent = cur.setup;
+  $('#sMust').innerHTML = cur.must.map(m => `<span class="chip">${m[0]}</span>`).join('');
+  $('#line').value = ''; $('#result').classList.remove('on');
+}
+$('#check').onclick = () => {
+  const t = $('#line').value.trim(); if (!t) { toast('Say or type your line first'); return }
+  const flags = []; BAD.forEach(([re, fix]) => { (t.match(re) || []).forEach(w => flags.push([w, fix])) });
+  const hits = cur.must.map(m => m[1].test(t));
+  $$('#sMust .chip').forEach((c, i) => c.classList.toggle('hit', hits[i]));
+  const q = /\?\s*$/.test(t) || /\?/.test(t);
+  const all = !flags.length && hits.every(Boolean) && q;
+  if (all) bump();
+  $('#result').innerHTML = `<div class="mono" style="color:${all ? 'var(--ok)' : 'var(--gold)'}">${all ? 'Door open. Clean line.' : 'Close. Fix these and say it again.'}</div><div class="checks">
+    <div class="ck ${flags.length ? 'x' : ''}"><i>${flags.length ? '!' : '✓'}</i><span>${flags.length ? flags.map(f => `<span class="flag">${f[0]}</span> → ${f[1]}`).join('<br>') : 'No bad words.'}</span></div>
+    ${cur.must.map((m, i) => `<div class="ck ${hits[i] ? '' : 'x'}"><i>${hits[i] ? '✓' : '!'}</i><span>${hits[i] ? 'Used' : 'Missing'}: ${m[0]}</span></div>`).join('')}
+    <div class="ck ${q ? '' : 'x'}"><i>${q ? '✓' : '!'}</i><span>${q ? 'Ends with a question.' : 'Ask a question. Hand them the next move.'}</span></div></div>`;
+  $('#result').classList.add('on');
+};
+$('#show').onclick = () => { $('#result').innerHTML = `<div class="mono">One way to say it</div><div class="model">“${cur.model}”</div>${cur.after ? `<p class="aft">${cur.after}</p>` : ''}`; $('#result').classList.add('on') };
+$('#claude').onclick = async () => {
+  const p = `Role play with me. I am a Team RISE associate practicing our good words. You play the person in this moment: "${cur.setup}" Stay in character and react like a real person would: if I use a bad word (sell, close, insurance, annuity, buy, pay, policy, premium, cost, fee, sign, commit, problem, issue, appointment, pitch, meeting, referral, upline, boss, join, recruit, downline, my team, the company, commission, extra income, side hustle, job, financial freedom, "you should", "when are you free", or telling me what to do), get a little guarded. If I use good words (own, contribute, savings program, authorize, moving forward, helping families, financial space, share, chat, visit, personal introductions, mentor, business partner, our team, we, let’s, "would you be open to", recommend, peace of mind, A or B choices), stay open. After 4 exchanges, step out of character and score me: list every bad word I used with the good word to use instead, and rewrite my closing question in good words. Start now with your first line.`;
+  try { await navigator.clipboard.writeText(p); toast('Copied. Paste it into Claude.') } catch (e) { $('#line').value = p; toast('Copy the text in the box') }
+};
+/* speech, where the browser has it */
+const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+if (SR) {
+  const mic = $('#mic'); mic.hidden = false; let rec = null;
+  mic.onclick = () => {
+    if (rec) { rec.stop(); return }
+    rec = new SR(); rec.lang = 'en-US'; rec.interimResults = true; rec.continuous = true;
+    const base = $('#line').value ? $('#line').value + ' ' : '';
+    rec.onresult = e => { $('#line').value = base + [...e.results].map(r => r[0].transcript).join(' ') };
+    rec.onend = () => { rec = null; mic.classList.remove('rec'); mic.textContent = '🎤 Speak'; if ($('#line').value.trim()) $('#check').click() };
+    rec.onerror = () => toast('Mic not available here. Type it instead.');
+    rec.start(); mic.classList.add('rec'); mic.textContent = '■ Stop';
+  };
+}
+
+/* ---------- sheet ---------- */
+let sheetKey = 'fam';
+function paintSheet() {
+  $('#sheet').innerHTML = SHEET[sheetKey].map(r => `<button class="glass sr"><div class="b"><span class="nv">NEVER USE</span>${r[1]}</div><div class="g">${r[2]}</div></button>`).join('');
+  $$('.sr').forEach(b => b.onclick = () => b.classList.toggle('peek'));
+}
+$$('#seg button').forEach(b => b.onclick = () => { $$('#seg button').forEach(x => x.classList.toggle('on', x === b)); sheetKey = b.dataset.c; paintSheet() });
+$('#cover').onclick = () => { $('#cover').classList.toggle('on'); $('#sheet').classList.toggle('cover') };
+paintSheet();
+
+/* deep link: index.html#cards, #say, #ask, #sheet (old #swap links land on cards) */
+const h = location.hash.slice(1).replace('swap', 'cards'); if (['cards', 'say', 'ask', 'sheet'].includes(h)) show(h);
+</script>
+
+</body></html>
